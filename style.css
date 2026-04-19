@@ -49,6 +49,7 @@
     height: 40px;
     /* Adjusted height */
     width: auto;
+    display: block;
     object-fit: contain;
     max-height: 100%;
     /* Ensure it doesn't overflow the nav bar */
@@ -88,6 +89,81 @@
 
 .nav-cta:hover {
     opacity: 0.82;
+}
+
+.nav-toggle {
+    appearance: none;
+    border: 1px solid #1f1f1f;
+    background: #0d0d0d;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.15s, opacity 0.15s, transform 0.15s;
+}
+
+.nav-toggle:hover {
+    opacity: 0.92;
+}
+
+.nav-toggle:active {
+    transform: translateY(1px);
+}
+
+.nav-toggle:focus-visible {
+    outline: 2px solid rgba(124, 131, 253, 0.55);
+    outline-offset: 2px;
+}
+
+.nav-toggle-bars {
+    width: 18px;
+    height: 2px;
+    background: #e6e6e6;
+    border-radius: 2px;
+    position: relative;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.nav-toggle-bars::before,
+.nav-toggle-bars::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 2px;
+    background: #e6e6e6;
+    border-radius: 2px;
+    transition: transform 0.2s ease, top 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle-bars::before {
+    top: -6px;
+}
+
+.nav-toggle-bars::after {
+    top: 6px;
+}
+
+.nav-menu {
+    display: none;
+}
+
+/* Open state driven by JS (set on <html>) */
+.nav-open .nav-toggle-bars {
+    background: transparent;
+}
+
+.nav-open .nav-toggle-bars::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.nav-open .nav-toggle-bars::after {
+    top: 0;
+    transform: rotate(-45deg);
 }
 
 /* HERO — side by side */
@@ -763,6 +839,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     font-size: 11px;
     color:#666;
     font-family: 'Geist Mono', monospace;
@@ -786,7 +863,8 @@
     .hero {
         flex-direction: column-reverse;
         gap: 2rem;
-        padding: 3rem 1.5rem;
+        /* Account for fixed 56px nav so the avatar never tucks under it */
+        padding: 4.5rem 1.5rem 3rem;
     }
 
     .hero-text {
@@ -819,7 +897,68 @@
         display: none;
     }
 
+    .nav-toggle {
+        display: inline-flex;
+    }
+
+    .nav-cta {
+        display: none;
+    }
+
+    .nav-menu {
+        display: block;
+        position: fixed;
+        top: 56px;
+        left: 0;
+        right: 0;
+        z-index: 99;
+        padding: 0.75rem 1rem 1rem;
+        background: rgba(0, 0, 0, 0.92);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid #1a1a1a;
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: opacity 0.18s ease, transform 0.18s ease;
+        max-height: calc(100vh - 56px);
+        overflow: auto;
+    }
+
+    .nav-menu a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 10px;
+        border-radius: 10px;
+        color: #d0d0d0;
+        text-decoration: none;
+        font-size: 14px;
+        border: 1px solid transparent;
+        transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+
+    .nav-menu a:hover {
+        background: #0d0d0d;
+        border-color: #1e1e1e;
+        color: #fff;
+    }
+
+    .nav-open .nav-menu {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
     .section {
         padding: 3rem 1.5rem;
+    }
+
+    .footer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 0.6rem;
+        padding: 1.5rem;
     }
 }
