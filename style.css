@@ -461,6 +461,7 @@
 .avatar-stat {
     background: #0a0a0a;
     flex: 1;
+    min-width: 0;
     padding: 0.6rem 0.5rem;
     text-align: center;
 }
@@ -477,6 +478,7 @@
     font-size: 9px;
     color: #333;
     margin-top: 2px;
+    line-height: 1.2;
 }
 
 /* SECTION */
@@ -875,6 +877,10 @@
         justify-content: center;
     }
 
+    .typing-wrap {
+        justify-content: center;
+    }
+
     .hero-socials {
         justify-content: center;
     }
@@ -890,7 +896,8 @@
     }
 
     .avatar-stats {
-        width: 140px;
+        width: calc(100vw - 3rem);
+        max-width: 180px;
     }
 
     .nav-links {
