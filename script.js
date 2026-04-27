@@ -92,6 +92,53 @@ document.addEventListener("DOMContentLoaded", () => {
             mql.addListener(handleChange);
         }
 
+        // ===== EMAILJS INIT =====
+        (function () {
+            emailjs.init("UcvQykz86DqewkZPW"); // Replace with your EmailJS user ID
+        })();
+
+        document.getElementById('contact-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const form = this;
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+
+            // Change button text to show sending
+            submitButton.innerHTML = 'Sending...';
+            submitButton.disabled = true;
+
+            emailjs.sendForm('service_n4s56cl', 'template_3j1vqfb', this)
+                .then(function () {
+                    console.log('SUCCESS!');
+                    // On success, show "Message Sent" with a checkmark
+                    submitButton.innerHTML = `
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Message Sent
+                    `;
+
+                    // Revert button back to original state after 3 seconds
+                    setTimeout(() => {
+                        submitButton.innerHTML = originalButtonText;
+                        submitButton.disabled = false;
+                        form.reset(); // Optionally reset the form fields
+                    }, 3000);
+
+                }, function (error) {
+                    console.log('FAILED...', error);
+                    // On failure, show an error message
+                    submitButton.innerHTML = 'Failed';
+
+                    // Revert button back to original state after 3 seconds
+                    setTimeout(() => {
+                        submitButton.innerHTML = originalButtonText;
+                        submitButton.disabled = false;
+                    }, 3000);
+                });
+        });
+
     } catch (err) {
         console.error("Script failed safely:", err);
     }

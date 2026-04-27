@@ -63,7 +63,7 @@
 
 .nav-links a {
     font-size: 13px;
-    color: #555;
+    color: #999;
     text-decoration: none;
     transition: color 0.15s;
 }
@@ -287,7 +287,7 @@
 
 .hero-sub {
     font-size: 14px;
-    color: #555;
+    color: #aaa;
     line-height: 1.75;
     margin-bottom: 2rem;
     max-width: 420px;
@@ -295,7 +295,7 @@
 }
 
 .hero-sub strong {
-    color: #888;
+    color: #ccc;
     font-weight: 400;
 }
 
@@ -353,7 +353,7 @@
 }
 
 .social-icon {
-    color: #888;
+    color: #aaa;
     text-decoration: none;
     transition: color 0.15s;
     display: flex;
@@ -534,7 +534,7 @@
 .about-cell-label {
     font-family: 'Geist Mono', monospace;
     font-size: 10px;
-    color: #333;
+    color: #666;
     text-transform: uppercase;
     letter-spacing: 0.09em;
     margin-bottom: 0.5rem;
@@ -542,7 +542,7 @@
 
 .about-cell-val {
     font-size: 13px;
-    color: #666;
+    color: #bbb;
     line-height: 1.7;
 }
 
@@ -707,7 +707,7 @@
 
 .project-desc {
     font-size: 12px;
-    color: #888;
+    color: #aaa;
     line-height: 1.6;
     margin-bottom: 0.9rem;
     flex: 1;
@@ -751,7 +751,7 @@
 .skill-cat {
     font-family: 'Geist Mono', monospace;
     font-size: 10px;
-    color: #888;
+    color: #aaa;
     text-transform: uppercase;
     letter-spacing: 0.09em;
     min-width: 80px;
@@ -805,7 +805,7 @@
 
 .contact-sub {
     font-size: 13px;
-    color: #888;
+    color: #aaa;
     margin-bottom: 2rem;
 }
 
@@ -814,6 +814,7 @@
     gap: 10px;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 2rem;
 }
 
 .contact-link {
@@ -821,7 +822,7 @@
     align-items: center;
     gap: 7px;
     font-size: 13px;
-    color: #666;
+    color: #999;
     background: #0d0d0d;
     border: 1px solid #1e1e1e;
     padding: 8px 16px;
@@ -843,7 +844,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     font-size: 11px;
-    color:#666;
+    color: #999;
     font-family: 'Geist Mono', monospace;
     max-width: 880px;
     margin: 0 auto;
@@ -851,7 +852,7 @@
 
 /* --- CV Button & About text modifiers --- */
 .about-desc {
-    color: #666;
+    color: #aaa;
     margin-bottom: 1.5rem;
 }
 
@@ -861,6 +862,51 @@
     gap: 8px;
 }
 
+/* CONTACT FORM */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 7px;
+    border: 1px solid #1e1e1e;
+    background: #0d0d0d;
+    color: #ccc;
+    font-family: 'Geist', sans-serif;
+    font-size: 13px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #7C83FD;
+    box-shadow: 0 0 0 2px rgba(124, 131, 253, 0.2);
+}
+
+.contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.contact-form .btn-primary {
+    align-self: center;
+}
+
+.btn-primary svg {
+    vertical-align: middle;
+}
 @media (max-width: 620px) {
     .hero {
         flex-direction: column-reverse;
